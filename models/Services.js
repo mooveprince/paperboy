@@ -1,0 +1,6 @@
+var GenericService = {
+    
+    getStories: function ( ) {
+        
+    }
+};
