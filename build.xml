@@ -6,7 +6,7 @@
     
     <property name="appname" value="paperboy"/>
     <property name="src" location="${appname}"/>
-    <property name="dist"  location="${appname}/${appname}_dist"/>
+    <property name="dist"  location="${appname}/dist"/>
     <property name="working_directory" location="./"/>    
     
     <target name="init">
@@ -21,7 +21,7 @@
         </exec>
     </target>
     
-    <target name="local" depends="buildjs" description="generate the distribution" >
+    <target name="local_old" depends="buildjs" description="generate the distribution" >
         <mkdir dir="${dist}"/>
         <mkdir dir="${dist}/${appname}"/>
         <mkdir dir="${dist}/${appname}/${appname}"/>
@@ -37,6 +37,24 @@
         </copy>
         -->
         <tar destfile="${dist}/${appname}-${DSTAMP}.tar" basedir="${dist}" excludes="*.tar"/>
+    </target>
+    
+    
+    <target name="local" depends="buildjs" description="generate the distribution" >
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${dist}/${appname}"/>
+        <mkdir dir="${dist}/steal"/>
+        <mkdir dir="${dist}/static"/>        
+        <copy file="${src}/production.css" todir="${dist}/${appname}"/>
+        <copy file="${src}/production.js" todir="${dist}/${appname}"/>
+        <copy file="${src}/index.production.html" tofile="${dist}/index.html"/>
+        <copy file="./steal/steal.production.js" todir="${dist}/steal"/>
+        <!--
+        <copy todir = "${dist}/${appname}/${appname}/static/images" >
+            <fileset dir="${src}/static/images"/>
+        </copy>
+        -->
+        <tar destfile="${dist}/${appname}.tar" basedir="${dist}" excludes="*.tar"/>
     </target>
     
     <target name="clean" description="clean up" >
