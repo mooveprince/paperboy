@@ -1,0 +1,44 @@
+<project name="jmvc" default="local" basedir="..">
+    
+    <description>
+        Paperboy App
+    </description>
+    
+    <property name="appname" value="paperboy"/>
+    <property name="src" location="${appname}"/>
+    <property name="dist"  location="${appname}_dist"/>
+    <property name="working_directory" location="./"/>    
+    
+    <target name="init">
+        <tstamp/>
+        <echo message="user.home=${user.home}"/>
+    </target>
+
+    <target name="buildjs" depends="init" description="minify and compress" >
+        <exec dir="." executable=".\js.bat">
+            <arg value="steal\buildjs"/>
+            <arg value="${appname}\${appname}.js"/>
+        </exec>
+    </target>
+    
+    <target name="local" depends="buildjs" description="generate the distribution" >
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${dist}/${appname}"/>
+        <mkdir dir="${dist}/${appname}/${appname}"/>
+        <mkdir dir="${dist}/${appname}/steal"/>
+        <mkdir dir="${dist}/${appname}/${appname}/static"/>        
+        <copy file="${src}/production.css" todir="${dist}/${appname}/${appname}"/>
+        <copy file="${src}/production.js" todir="${dist}/${appname}/${appname}"/>
+        <copy file="${src}/index.production.html" tofile="${dist}/${appname}/${appname}/index.html"/>
+        <copy file="./steal/steal.production.js" todir="${dist}/${appname}/steal"/>
+        <copy todir = "${dist}/${appname}/${appname}/static/images" >
+            <fileset dir="${src}/static/images"/>
+        </copy>   
+        <tar destfile="${dist}/${appname}-${DSTAMP}.tar" basedir="${dist}" excludes="*.tar"/>
+    </target>
+    
+    <target name="clean" description="clean up" >
+        <delete dir="${dist}"/>
+    </target>    
+    
+</project>
