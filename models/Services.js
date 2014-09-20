@@ -1,8 +1,12 @@
-var GenericService = {
+var Services = {
     
-    getStories: function ( ) {
+    getStories: function ( callback ) {
         
-        var url 
+        $.ajax ( {
+            url: 'http://apipaperboy.ezpz.gs/stories/',
+            dataType: 'jsonp',
+            success: callback
+            });
         
     }
 };

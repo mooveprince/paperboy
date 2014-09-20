@@ -11,9 +11,10 @@ steal('can','./init.ejs', function(can, initView){
 	/** @Prototype */
 	{
 		init : function(){
-			this.element.html(initView({
-				message: "Hello World from StoryController"
-			}));
+            var curObj = this;
+            Services.getStories ( function ( data ) {
+                curObj.element.html(initView( {response: data} ));
+            });
 		}
 	});
 });

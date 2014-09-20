@@ -1,1 +1,15 @@
-<%= this.message %>
+                    <% $.each ( this.response.stories, function (idx, story ) { %>
+
+
+                    <div class="item">
+                            <div class="itemLeft">
+                                <img src="bridge.jpg" class="itemLeft">
+                            </div> 
+                            <div class="itemRight">
+                                <h3>News <%= idx %></h3>
+                                <p>
+                                    <%= story.summary %>                      
+                                </p> 
+                            </div>    
+                    </div> 
+                                <% }); %>
