@@ -44,7 +44,8 @@
         <mkdir dir="${dist}"/>
         <mkdir dir="${dist}/${appname}"/>
         <mkdir dir="${dist}/steal"/>
-        <mkdir dir="${dist}/static"/>        
+        <mkdir dir="${dist}/static"/> 
+        <mkdir dir="${dist}/static/styles"/>
         <copy file="${src}/production.css" todir="${dist}/${appname}"/>
         <copy file="${src}/production.js" todir="${dist}/${appname}"/>
         <copy file="${src}/index.production.html" tofile="${dist}/index.html"/>
@@ -54,6 +55,9 @@
             <fileset dir="${src}/static/images"/>
         </copy>
         -->
+        <copy todir = "${dist}/static/styles" >
+            <fileset dir="${src}/static/styles"/>
+        </copy>        
         <tar destfile="${dist}/${appname}.tar" basedir="${dist}" excludes="*.tar"/>
     </target>
     
