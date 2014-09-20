@@ -6,7 +6,7 @@
     
     <property name="appname" value="paperboy"/>
     <property name="src" location="${appname}"/>
-    <property name="dist"  location="${appname}_dist"/>
+    <property name="dist"  location="${appname}/${appname}_dist"/>
     <property name="working_directory" location="./"/>    
     
     <target name="init">
