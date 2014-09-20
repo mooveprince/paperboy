@@ -15,9 +15,9 @@
     </target>
 
     <target name="buildjs" depends="init" description="minify and compress" >
-        <exec dir="." executable=".\js.bat">
-            <arg value="steal\buildjs"/>
-            <arg value="${appname}\${appname}.js"/>
+        <exec dir="." executable=".\js">
+            <arg value="steal/buildjs"/>
+            <arg value="${appname}/${appname}.js"/>
         </exec>
     </target>
     
@@ -31,9 +31,11 @@
         <copy file="${src}/production.js" todir="${dist}/${appname}/${appname}"/>
         <copy file="${src}/index.production.html" tofile="${dist}/${appname}/${appname}/index.html"/>
         <copy file="./steal/steal.production.js" todir="${dist}/${appname}/steal"/>
+        <!--
         <copy todir = "${dist}/${appname}/${appname}/static/images" >
             <fileset dir="${src}/static/images"/>
-        </copy>   
+        </copy>
+        -->
         <tar destfile="${dist}/${appname}-${DSTAMP}.tar" basedir="${dist}" excludes="*.tar"/>
     </target>
     
