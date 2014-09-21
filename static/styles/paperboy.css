@@ -147,12 +147,32 @@ a, a:visited, a:hover, a:active {
 }
 
 
-@media screen and (max-width: 600px) {
-
+@media screen and (max-width: 810px) {
+    .container {
+        width: 100%;
+    }
+    .header {
+        width: 96%;
+    }
+    .topic {
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
 }
 
-@media screen and (max-width: 990px) {
-    .container,.header{
-        width: 100%;
+@media screen and (min-width: 810px) and (max-width: 990px) {
+    .container{
+        width: 810px;
+    }
+    .header{
+        width: 96%;
+    }
+    .topic, .media_image {
+        width: 250px;
+    }
+    .topic {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
