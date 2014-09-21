@@ -50,7 +50,7 @@
         <copy file="${src}/production.js" todir="${dist}/${appname}"/>
         <copy file="${src}/index.production.html" tofile="${dist}/index.html"/>
         <copy file="./steal/steal.production.js" todir="${dist}/steal"/>
-        <copy todir = "${dist}/${appname}/${appname}/static/images" >
+        <copy todir = "${dist}/static/images" >
             <fileset dir="${src}/static/images"/>
         </copy>
         <copy todir = "${dist}/static/styles" >
