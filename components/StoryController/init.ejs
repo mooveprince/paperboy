@@ -1,15 +1,30 @@
-                    <% $.each ( this.response.stories, function (idx, story ) { %>
+<% $.each ( this.response.topics, function (idx, story ) { %>
 
+<div class="topic cf">
+    <div class="media_block">
+        <% if(story.media_content=="") { %>
+            <img class="media_image" src="static/images/2.jpg">
+        <% } else { %>
+            <img class="media_image" src="<%= story.media_content %>">
+        <% } %>
+    </div>
+    <div class="copy_block">
+        <div class="topic_title" data-short="<%= story.link %>">
+            <%= story.title %>
+        </div>
+        <div class="topic_source">
+            <%= story.source %>
+        </div>
+        <div class="topic_summary">
+            <%= story.summary %>
+        </div>
+        <div class="topic_related">
+            <% $.each(story.related_stories, function (jdx, related) { %>
+                <% if(jdx > 0) { %>,&nbsp;<% } %>
+                <a href="http://apipaperboy.ezpz.gs<%= related.link %>" target="_blank"><%= related.source %></a>
+            <% }); %>
+        </div>
+    </div>
+</div>
 
-                    <div class="item">
-                            <div class="itemLeft">
-                                <img src="" class="itemLeft">
-                            </div> 
-                            <div class="itemRight">
-                                <h3>News <%= idx+1 %></h3>
-                                <p>
-                                    <%= story.summary %>                      
-                                </p> 
-                            </div>    
-                    </div> 
-                                <% }); %>
+<% }); %>

@@ -15,6 +15,10 @@ steal('can','./init.ejs', function(can, initView){
             Services.getStories ( function ( data ) {
                 curObj.element.html(initView( {response: data} ));
             });
-		}
+		},
+        ".topic_title click" : function(a,e){
+            var shortUrl = $(a).data("short");
+            window.open('http://apipaperboy.ezpz.gs'+shortUrl,"_blank");
+        }
 	});
 });
